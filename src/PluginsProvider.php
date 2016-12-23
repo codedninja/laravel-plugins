@@ -26,6 +26,7 @@ class PluginsProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->publishMigration();
+		$this->publishHelloWorld();
 
 		if(Schema::hasTable('plugins') && $this->app->runningInConsole() === false)
 		{
@@ -71,15 +72,23 @@ class PluginsProvider extends ServiceProvider
 	}
 
 	protected function publishMigration()
-    {
-      if (! class_exists('CreatePluginsTable')) {
-        // Publish the migration
-        $timestamp = date('Y_m_d_His', time());
-        $this->publishes([
-          __DIR__.'/database/migrations/create_plugins_table.php' => database_path('migrations/'.$timestamp.'_create_plugins_table.php'),
-          ], 'migrations');
-      }
+  {
+    if (! class_exists('CreatePluginsTable')) {
+      // Publish the migration
+      $timestamp = date('Y_m_d_His', time());
+      $this->publishes([
+        __DIR__.'/database/migrations/create_plugins_table.php' => database_path('migrations/'.$timestamp.'_create_plugins_table.php'),
+        ], 'migrations');
     }
+  }
+
+  public function publishHelloWorld()
+  {
+  	$timestamp = date('Y_m_d_His', time());
+      $this->publishes([
+        __DIR__.'/public/' => public_path(''),
+        ], 'plugins');
+  }
 
 	public function register()
 	{
