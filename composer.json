@@ -1,0 +1,25 @@
+{
+    "name": "tehcodedninja/plugins",
+    "type": "library",
+    "description": "Plugins package for Laravel.",
+    "keywords": ["plugins","module","laravel","plugin","modules"],
+    "homepage": "https://github.com/tehcodedninja/laravel-plugins",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Pivonka",
+            "email": "m.pivonka@codedninja.com",
+            "homepage": "http://codedninja.com/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Tehcodedninja\\Plugins": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "laravel/framework": "~5.3"
+    }
+}
